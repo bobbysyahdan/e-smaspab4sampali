@@ -8,8 +8,6 @@ class UserIdentity extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('User_identity_model');
-        $this->load->model('Purchase_model');
-        $this->load->model('Transaction_model');
         $this->load->model('User_model');
         $this->load->library('form_validation');
         if(!$this->session->userdata('email') || $this->session->userdata('role') != 1) {

@@ -7,8 +7,6 @@ class User extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Purchase_model');
-        $this->load->model('Transaction_model');
         $this->load->model('User_model');
         $this->load->library('form_validation');
         if(!$this->session->userdata('email') || $this->session->userdata('role') != 1) {
@@ -20,7 +18,6 @@ class User extends CI_Controller {
 	{   
         $data['title'] = "User";
         $data['users'] = $this->User_model->getAll();
-        $this->User_model->updateDibaca();
         $this->load->view('layouts/header', $data);
         $this->load->view('layouts/menu');
         $this->load->view('user/index', $data);

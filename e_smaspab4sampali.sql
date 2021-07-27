@@ -1,258 +1,168 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mariadb_project1
- Source Server Type    : MariaDB
- Source Server Version : 100413
- Source Schema         : bidlit
+ Source Server         : myprojects
+ Source Server Type    : MySQL
+ Source Server Version : 100138
+ Source Host           : localhost:3306
+ Source Schema         : e_smaspab4sampali
 
- Target Server Type    : MariaDB
- Target Server Version : 100413
+ Target Server Type    : MySQL
+ Target Server Version : 100138
  File Encoding         : 65001
 
- Date: 13/01/2021 13:05:02
+ Date: 27/07/2021 22:21:25
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for book_identities
+-- Table structure for guru
 -- ----------------------------
-DROP TABLE IF EXISTS `book_identities`;
-CREATE TABLE `book_identities` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `isbn` int(11) NOT NULL,
-  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `publisher` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `author` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `publication_year` year(4) NOT NULL,
-  `amount_subscribe` int(11) NOT NULL,
-  `pages` int(11) NOT NULL,
-  `id_category` int(11) NOT NULL,
-  `id_package_edition` int(11) NOT NULL,
-  `id_admin` int(11) NOT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file_uploaded` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rate` double(8,2) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DROP TABLE IF EXISTS `guru`;
+CREATE TABLE `guru`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nip` bigint NULL DEFAULT NULL,
+  `nama_lengkap` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `tempat_lahir` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `tanggal_lahir` date NULL DEFAULT NULL,
+  `jenis_kelamin` tinyint NULL DEFAULT NULL,
+  `no_handphone` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `deleted_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of book_identities
+-- Records of guru
 -- ----------------------------
-BEGIN;
-COMMIT;
+INSERT INTO `guru` VALUES (1, 127171717, 'Ahmad Haris Lubis', 'Jl. Pukat IV No. 47 Medan ', 'Medan', '1966-01-17', 1, '081289435583', NULL, '2021-07-27 20:07:18', '2021-07-27 20:09:46');
+INSERT INTO `guru` VALUES (2, 120001, 'Winda ', 'Saentis', 'Medan', '1989-10-01', 2, '085635871465', NULL, '2021-07-27 22:19:54', '2021-07-27 22:19:54');
+INSERT INTO `guru` VALUES (3, 120002, 'Astri', 'Saentis', 'Medan', '1990-01-11', 2, '081384562380', NULL, '2021-07-27 22:22:41', '2021-07-27 22:22:41');
 
 -- ----------------------------
--- Table structure for book_stocks
+-- Table structure for kelas
 -- ----------------------------
-DROP TABLE IF EXISTS `book_stocks`;
-CREATE TABLE `book_stocks` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `id_book` int(11) NOT NULL,
-  `stock` int(11) NOT NULL,
-  `amount_digital_buyer` int(11) NOT NULL,
-  `book_type` tinyint(4) NOT NULL,
-  `is_available` tinyint(4) NOT NULL,
-  `price` bigint(20) NOT NULL,
-  `weight` double NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `amount_printed_buyer` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DROP TABLE IF EXISTS `kelas`;
+CREATE TABLE `kelas`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `wali_kelas` bigint NULL DEFAULT NULL,
+  `nama_kelas` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tahun_ajaran` year NULL DEFAULT NULL,
+  `deleted_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of book_stocks
+-- Records of kelas
 -- ----------------------------
-BEGIN;
-COMMIT;
+INSERT INTO `kelas` VALUES (1, 1, 'X', 2021, NULL, '2021-07-27 20:22:37', '2021-07-27 20:22:37');
+INSERT INTO `kelas` VALUES (3, 2, 'X', 2020, NULL, '2021-07-27 22:24:05', '2021-07-27 22:24:05');
+INSERT INTO `kelas` VALUES (4, 3, 'XI', 2020, NULL, '2021-07-27 22:24:26', '2021-07-27 22:24:26');
 
 -- ----------------------------
--- Table structure for carts
+-- Table structure for siswa
 -- ----------------------------
-DROP TABLE IF EXISTS `carts`;
-CREATE TABLE `carts` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `id_user` int(11) NOT NULL,
-  `id_book_stock` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `price` bigint(20) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DROP TABLE IF EXISTS `siswa`;
+CREATE TABLE `siswa`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nis` bigint NOT NULL,
+  `kelas` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_lengkap` varbinary(255) NULL DEFAULT NULL,
+  `alamat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `tanggal_lahir` date NULL DEFAULT NULL,
+  `tempat_lahir` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `jenis_kelamin` int NULL DEFAULT NULL,
+  `nama_orangtua` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `no_handphone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `deleted_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of carts
+-- Records of siswa
 -- ----------------------------
-BEGIN;
-COMMIT;
+INSERT INTO `siswa` VALUES (1, 10001, '1', 0x53697469204D6169205361726168, 'Jl. Sampali', '2000-10-10', 'Medan', 2, 'Budi', '081231231121', NULL, '2021-07-27 20:35:58', '2021-07-27 20:40:47');
+INSERT INTO `siswa` VALUES (2, 1, '3', 0x4D696120416D656C6961, 'Sampali', '2001-09-17', 'Medan', 2, 'Hermanto', '083158734001', NULL, '2021-07-27 22:27:43', '2021-07-27 22:27:43');
+INSERT INTO `siswa` VALUES (3, 2, '3', 0x4C696120416E697461, 'Saentis', '2003-10-03', 'Medan', 2, 'Andi', '085612007658', NULL, '2021-07-27 22:29:16', '2021-07-27 22:29:16');
 
 -- ----------------------------
--- Table structure for email_readers
+-- Table structure for transaksi_pembayaran_spp
 -- ----------------------------
-DROP TABLE IF EXISTS `email_readers`;
-CREATE TABLE `email_readers` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `id_transaction` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DROP TABLE IF EXISTS `transaksi_pembayaran_spp`;
+CREATE TABLE `transaksi_pembayaran_spp`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `siswa` bigint NULL DEFAULT NULL,
+  `kode_pembayaran` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jumlah_pembayaran` bigint NULL DEFAULT NULL,
+  `tanggal_pembayaran` date NULL DEFAULT NULL,
+  `deleted_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of email_readers
+-- Records of transaksi_pembayaran_spp
 -- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
--- Table structure for purchases
--- ----------------------------
-DROP TABLE IF EXISTS `purchases`;
-CREATE TABLE `purchases` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `id_user` int(11) NOT NULL,
-  `id_book_stock` int(11) NOT NULL,
-  `id_transaction` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `book_type` tinyint(4) NOT NULL,
-  `price` bigint(20) NOT NULL,
-  `purchase_date` date NOT NULL,
-  `id_status` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ----------------------------
--- Records of purchases
--- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
--- Table structure for ref_book_categories
--- ----------------------------
-DROP TABLE IF EXISTS `ref_book_categories`;
-CREATE TABLE `ref_book_categories` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `category` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ----------------------------
--- Records of ref_book_categories
--- ----------------------------
-BEGIN;
-COMMIT;
-
--- ----------------------------
--- Table structure for transactions
--- ----------------------------
-DROP TABLE IF EXISTS `transactions`;
-CREATE TABLE `transactions` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `no_order` int(11) NOT NULL,
-  `id_status` int(11) NOT NULL,
-  `book_type` int(11) NOT NULL,
-  `total_price` bigint(20) NOT NULL,
-  `mid_token` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ----------------------------
--- Records of transactions
--- ----------------------------
-BEGIN;
-COMMIT;
+INSERT INTO `transaksi_pembayaran_spp` VALUES (1, 1, 'A00001', 25000, '2021-01-01', NULL, '2021-07-27 21:20:33', '2021-07-27 21:22:12');
+INSERT INTO `transaksi_pembayaran_spp` VALUES (2, 2, '10', 160000, '2021-10-01', NULL, '2021-07-27 22:30:11', '2021-07-27 22:30:11');
+INSERT INTO `transaksi_pembayaran_spp` VALUES (3, 3, '10', 160000, '2021-10-05', NULL, '2021-07-27 22:31:04', '2021-07-27 22:31:04');
 
 -- ----------------------------
 -- Table structure for user_identities
 -- ----------------------------
 DROP TABLE IF EXISTS `user_identities`;
-CREATE TABLE `user_identities` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `id_user` int(11) NOT NULL,
-  `fullname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `user_identities`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_user` int NOT NULL,
+  `fullname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_of_birth` date NOT NULL,
-  `no_handphone` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` tinyint(4) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `no_handphone` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` tinyint NOT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of user_identities
 -- ----------------------------
-BEGIN;
-COMMIT;
 
 -- ----------------------------
 -- Table structure for users
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_active` tinyint(4) NOT NULL,
-  `role` tinyint(4) NOT NULL,
-  `lastlogin` timestamp NULL DEFAULT NULL,
-  `device_model` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `device_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `device_version` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `is_login` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `users`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp(0) NULL DEFAULT NULL,
+  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_active` tinyint NOT NULL,
+  `role` tinyint NOT NULL,
+  `lastlogin` timestamp(0) NULL DEFAULT NULL,
+  `device_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `device_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `device_version` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `is_login` tinyint NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-BEGIN;
-INSERT INTO `users` VALUES (1, 'admin', 'admin.smapab4sampali@gmail.com', NULL, '$2y$10$m6zPP8TCwZYuDicvnmlqNupr2yRmES0lbP8qotLg3tgwgYajxvyLS', 1, 1, '2021-01-13 00:49:07', NULL, NULL, NULL, NULL, '2020-12-24 17:29:38', '2021-01-11 00:56:38', 1);
-COMMIT;
-
--- ----------------------------
--- Table structure for verified_books
--- ----------------------------
-DROP TABLE IF EXISTS `verified_books`;
-CREATE TABLE `verified_books` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `id_book` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `book_type` tinyint(4) NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `serial_number` int(11) NOT NULL,
-  `is_verified` tinyint(4) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ----------------------------
--- Records of verified_books
--- ----------------------------
-BEGIN;
-COMMIT;
+INSERT INTO `users` VALUES (1, 'admin', 'admin.smaspab4sampali@gmail.com', NULL, '$2y$10$m6zPP8TCwZYuDicvnmlqNupr2yRmES0lbP8qotLg3tgwgYajxvyLS', 1, 1, '2021-07-27 20:00:20', NULL, NULL, NULL, NULL, '2020-12-24 17:29:38', '2021-01-11 00:56:38', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

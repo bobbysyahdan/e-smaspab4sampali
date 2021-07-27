@@ -83,60 +83,9 @@
                 </ul> -->
             </div>
             <ul class="nav navbar-nav align-items-center ml-auto">
-                <?php if(count($this->User_model->getNotificationAdmin()) > 0): ?>
-                <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link" href="javascript:void(0);" data-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span class="badge badge-pill badge-danger badge-up"><?= count($this->Purchase_model->getNotificationAdmin()) + 1 ?></span></a>
-                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
-                        <li class="scrollable-container media-list">    
-                            <a class="d-flex" href="<?= base_url('user') ?>">
-                                <div class="media d-flex align-items-start">
-                                    <div class="media-body">
-                                        <p class="media-heading"><span class="font-weight-bolder">New User</span></p><small class="notification-text"></small>
-                                    </div>
-                                </div>
-                            </a>
-                            <a class="d-flex" href="<?= base_url('user') ?>">
-                                <div class="media d-flex align-items-start">
-                                    <div class="media-body">
-                                        <p class="media-heading"><span class="font-weight-bolder">Ada +<?= count($this->User_model->getNotificationAdmin()) ?> pengguna baru.</span></p><small class="notification-text"><?= $this->User_model->getNotificationAdmin()[0]['waktu'] ?></small>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                <?php else: ?>
-                <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link" href="javascript:void(0);" data-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span class="badge badge-pill badge-danger badge-up"><?= count($this->Purchase_model->getNotificationAdmin()) ?></span></a>
-                    <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                 
-                <?php endif; ?>
-                
-                    
-                        <li class="scrollable-container media-list">
-                            <?php if(count($this->Purchase_model->getNotificationAdmin()) > 0): ?>
-                            <a class="d-flex" href="<?= base_url('purchase') ?>">
-                                <div class="media d-flex align-items-start">
-                                    <div class="media-body">
-                                        <p class="media-heading"><span class="font-weight-bolder">Purchase Book</span></p><small class="notification-text"></small>
-                                    </div>
-                                </div>
-                            </a>
-                            <?php foreach($this->Purchase_model->getNotificationAdmin() as $value): ?>
-                            <a class="d-flex" href="<?= base_url('purchase') ?>">
-                                <div class="media d-flex align-items-start">
-                                    <!-- <div class="media-left">
-                                        <div class="avatar"><img src="<?= base_url('/assets_template/app-assets/images/portrait/small/avatar-s-15.jpg') ?>" alt="avatar" width="32" height="32"></div>
-                                    </div> -->
-                                    <div class="media-body">
-                                        <p class="media-heading"><span class="font-weight-bolder"><?= $value['email'] ?> telah melakukan pembelian dan pembayaran pada buku <?= $value['title'] ?> sebanyak <?= $value['quantity'] ?> unit.</span></p><small class="notification-text"><?= $value['waktu'] ?></small>
-                                    </div>
-                                </div>
-                            </a>
-                            <?php endforeach; ?>
-                            <?php endif; ?>
-                        </li>
-                        <!-- <li class="dropdown-menu-footer"><a class="btn btn-primary btn-block" href="javascript:void(0)">Read all notifications</a></li> -->
-                    </ul>
-                </li> 
                 <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder"><?= $this->session->userdata('email'); ?></span><span class="user-status">Admin</span></div><span class="avatar"><img class="round" src="<?= base_url('/upload/logo/logo_ppks.png') ?>" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
+                        <div class="user-nav d-sm-flex d-none"><span class="user-name font-weight-bolder"><?= $this->session->userdata('email'); ?></span><span class="user-status">Admin</span></div><span class="avatar"><img class="round" src="<?= base_url('/upload/logo/logo.jpeg') ?>" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
                         <a class="dropdown-item" href="<?= base_url('user/resetPassword/'.$this->session->userdata('id')) ?>"><i class="mr-50" data-feather="key"></i>Change Password</a>
@@ -211,7 +160,7 @@
             </a></li>
         <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view.html">
                 <div class="d-flex align-items-center">
-                    <div class="avatar mr-75"><img src="<?= base_url('/upload/logo/logo_ppks.png') ?>" alt="png" height="32"></div>
+                    <div class="avatar mr-75"><img src="<?= base_url('/upload/logo/logo.jpeg') ?>" alt="png" height="32"></div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">Anna Strong</p><small class="text-muted">Web Designer</small>
                     </div>
