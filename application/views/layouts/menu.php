@@ -5,7 +5,7 @@ $path_only = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="../../../html/ltr/vertical-menu-template-dark/index.html"><span class="brand-logo">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="<?= base_url('/')?>"><span class="brand-logo">
                             <!-- <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                                 <defs>
                                     <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
@@ -29,9 +29,9 @@ $path_only = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                                     </g>
                                 </g>
                             </svg> -->
-                            <img src="<?= base_url('/upload/logo/logo_ppks.png') ?>" alt="logo">
+                            <img src="<?= base_url('/upload/logo/logo.jpeg') ?>" alt="logo">
                             </span>
-                        <h2 class="brand-text">BidLit</h2>
+                        <h6 class="brand-text" style="font-size: 14px;">SMAS PAB 4 SAMPALI</h6>
                     </a></li>
                 <!-- <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li> -->
             </ul>
@@ -39,45 +39,21 @@ $path_only = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="nav-item <?= $path_only == '/' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/') ?>"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="home">Home</span></a>
+                <li class="nav-item <?= $path_only == '/' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/') ?>"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="home">Halaman Utama</span></a>
                 </li>
 
-                <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Main Data</span><i data-feather="more-horizontal"></i>
+                <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Data Utama</span><i data-feather="more-horizontal"></i>
                 </li>
-                <li class="nav-item <?= $path_only == '/bookIdentity' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/bookIdentity') ?>"><i data-feather="book"></i><span class="menu-title text-truncate" data-i18n="bookIdentity">Book Identity</span></a>
+                
+                
+                <li class="nav-item <?= $path_only == '/kelas' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/kelas') ?>"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="kelas">Kelas</span></a>
                 </li>
-                <li class="nav-item <?= $path_only == '/bookStock' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/bookStock') ?>"><i data-feather="book-open"></i><span class="menu-title text-truncate" data-i18n="bookStock">Book Stock</span></a>
+                <li class="nav-item <?= $path_only == '/siswa' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/siswa') ?>"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="siswa">Siswa</span></a>
                 </li>
-                <!-- <li class="nav-item <?= $path_only == '/book' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/book') ?>"><i data-feather="book-open"></i><span class="menu-title text-truncate" data-i18n="book">Book</span></a>
-                </li> -->
-                <!-- <li class="nav-item <?= $path_only == '/cart' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/cart') ?>"><i data-feather="shopping-cart"></i><span class="menu-title text-truncate" data-i18n="cart">Cart</span></a>
-                </li> -->
-                <li class="nav-item <?= $path_only == '/purchase' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/purchase') ?>"><i data-feather="shopping-bag"></i><span class="menu-title text-truncate" data-i18n="purchase">Purchase</span></a>
-                </li>
-                <!-- <li class="nav-item <?= $path_only == '/subscribe' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/subscribe') ?>"><i data-feather="play"></i><span class="menu-title text-truncate" data-i18n="subscribe">Subscribe</span></a>
-                </li> -->
-                <li class="nav-item <?= $path_only == '/transaction' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/transaction') ?>"><i data-feather="dollar-sign"></i><span class="menu-title text-truncate" data-i18n="transaction">Transaction</span></a>
-                </li>
-                <li class="nav-item <?= $path_only == '/voucher' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/voucher') ?>"><i data-feather='percent'></i><span class="menu-title text-truncate" data-i18n="voucher">Voucher</span></a>
-                </li>
-                <li class="nav-item <?= $path_only == '/verifiedBook' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/verifiedBook') ?>"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="verifiedBook">Verified Book</span></a>
+                <li class="nav-item <?= $path_only == '/transaksiPembayaranSPP' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/transaksiPembayaranSPP') ?>"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="transaksiPembayaranSPP">Transaksi Pembayaran SPP</span></a>
                 </li>
                 <li class="nav-item <?= $path_only == '/user' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/user') ?>"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="user">User</span></a>
                 </li>
-               
-                <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Reference Data</span><i data-feather="more-horizontal"></i>
-                </li>
-                <li class="nav-item <?= $path_only == '/refBookCategory' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/refBookCategory') ?>"><i data-feather="archive"></i><span class="menu-title text-truncate" data-i18n="refBookCategory">Book Category</span></a>
-                </li>
-                <!-- <li class="nav-item <s?= $path_only == '/refSubscribePackage' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<s?= base_url('/refSubscribePackage') ?>"><i data-feather="archive"></i><span class="menu-title text-truncate" data-i18n="refSubscribePackage">Subscribe Package</span></a>
-                </li> -->
-                <li class="nav-item <?= $path_only == '/refPackageEdition' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/refPackageEdition') ?>"><i data-feather="archive"></i><span class="menu-title text-truncate" data-i18n="refPackageEdition">Package Edition</span></a>
-                </li>
-                <li class="nav-item <?= $path_only == '/refPurchaseStatus' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/refPurchaseStatus') ?>"><i data-feather="archive"></i><span class="menu-title text-truncate" data-i18n="refPurchaseStatus">Purchase Status</span></a>
-                </li>
-                <li class="nav-item <?= $path_only == '/refTransactionStatus' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/refTransactionStatus') ?>"><i data-feather="archive"></i><span class="menu-title text-truncate" data-i18n="refTransactionStatus">Transaction Status</span></a>
-                </li>
-                
             </ul>
         </div>
     </div>

@@ -79,11 +79,11 @@
                                             </g>
                                         </g>
                                     </svg> -->
-                                    <img src="<?= base_url('/upload/logo/logo_ppks.png') ?>" style="width: 50px;" alt="logo">
-                                    <h2 class="brand-text text-primary ml-1 mt-1">BidLit</h2>
+                                    <img src="<?= base_url('/upload/logo/logo.jpeg') ?>" style="width: 50px;" alt="logo">
+                                    <h2 class="brand-text text-primary ml-1 mt-1">SMAS PAB 4 SAMPALI</h2>
                                 </a>
 
-                                <h4 class="card-title mb-1">Welcome to BidLit! 👋</h4>
+                                <h4 class="card-title mb-1">Welcome to SMAS PAB 4 Sampali! 👋</h4>
                                 <!-- <p class="card-text mb-2">Please sign-in to your account and start the adventure</p> -->
                                 <?php if($this->session->flashdata('failed')): ?>
                                    <div class="col-md-12 p-0 mt-2">

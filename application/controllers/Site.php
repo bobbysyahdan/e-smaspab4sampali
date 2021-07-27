@@ -7,11 +7,6 @@ class Site extends CI_Controller {
         {
             parent::__construct();
             $this->load->model('User_model');
-            $this->load->model('Book_identity_model');
-            $this->load->model('Voucher_model');
-            $this->load->model('Purchase_model');
-            $this->load->model('Transaction_model');
-            $this->load->model('Verified_book_model');
             $this->load->library('form_validation');
         }
 
@@ -20,16 +15,7 @@ class Site extends CI_Controller {
                 if(!$this->session->userdata('email') || $this->session->userdata('role') != 1) {
                         redirect('/site/login');
                 }
-                $data['title'] = "BiDLit";
-                $data['books'] = $this->Book_identity_model->getAll();
-                $data['vouchers'] = $this->Voucher_model->getAll();
-                $data['purchases'] = $this->Purchase_model->getAllSettlement();
-                $data['transactions'] = $this->Transaction_model->getAllSettlement();
-                // $data['transactions_on_canceled'] = $this->Trasactions_model->getAllCanceled();
-                $data['users'] = $this->User_model->getAllUser();
-                $data['verified_books'] = $this->Verified_book_model->getAll();
-                $data['digital_books'] = $this->Verified_book_model->getAllDigitalBookSoldOut();
-                $data['printed_books'] = $this->Verified_book_model->getAllPrintedBookSoldOut();
+                $data['title'] = "SMAS PAB 4 SAMPALI";
                 $this->load->view('layouts/header_site', $data);
                 $this->load->view('layouts/menu');
                 $this->load->view('site/index');
