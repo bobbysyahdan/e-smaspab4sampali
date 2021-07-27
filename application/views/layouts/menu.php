@@ -5,7 +5,7 @@ $path_only = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="../../../html/ltr/vertical-menu-template-dark/index.html"><span class="brand-logo">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="<?= base_url('/')?>"><span class="brand-logo">
                             <!-- <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                                 <defs>
                                     <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
@@ -42,7 +42,7 @@ $path_only = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                 <li class="nav-item <?= $path_only == '/' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/') ?>"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="home">Halaman Utama</span></a>
                 </li>
 
-                <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Main Data</span><i data-feather="more-horizontal"></i>
+                <li class="navigation-header"><span data-i18n="Apps &amp; Pages">Data Utama</span><i data-feather="more-horizontal"></i>
                 </li>
                 
                 <li class="nav-item <?= $path_only == '/guru' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/guru') ?>"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="guru">Data Guru</span></a>
