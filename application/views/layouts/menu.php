@@ -53,6 +53,8 @@ $path_only = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                 </li>
                 <li class="nav-item <?= $path_only == '/transaksiPembayaranSPP' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/transaksiPembayaranSPP') ?>"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="transaksiPembayaranSPP">Transaksi Pembayaran SPP</span></a>
                 </li>
+                <li class="nav-item <?= $path_only == '/laporan' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/laporan') ?>"><i data-feather="printer"></i><span class="menu-title text-truncate" data-i18n="laporan">Laporan</span></a>
+                </li>
                 <li class="nav-item <?= $path_only == '/user' ? 'active' : '' ?>"><a class="d-flex align-items-center" href="<?= base_url('/user') ?>"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="user">User</span></a>
                 </li>
                

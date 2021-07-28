@@ -64,6 +64,7 @@ class Kelas extends CI_Controller {
     public function update($id)
 	{   
         $data['title'] = "Ubah Data Kelas";
+        $data['kelas'] = $this->Kelas_model->getById($id);
         $data['guru'] = $this->Guru_model->getAll();
         $this->form_validation->set_rules('nama_kelas', 'Nama kelas', 'required');
         $this->form_validation->set_rules('wali_kelas', 'Wali Kelas', 'required');

@@ -4,9 +4,9 @@ class Transaksi_pembayaran_spp_model extends CI_model {
     
     public function getAll()
     {
-        $this->db->select("*, transaksi_pembayaran_spp.id AS id, DATE_FORMAT(transaksi_pembayaran_spp.created_at,'%d-%m-%Y %H:%i:%s') AS tanggal_pembayaran");
+        $this->db->select("*, transaksi_pembayaran_spp.id AS id, DATE_FORMAT(transaksi_pembayaran_spp.tanggal_pembayaran,'%d-%m-%Y') AS tanggal_pembayaran");
         $this->db->from('transaksi_pembayaran_spp');
-        $this->db->order_by('transaksi_pembayaran_spp.id','created_at');
+        $this->db->order_by('transaksi_pembayaran_spp.id','tanggal_pembayaran');
         return $this->db->get()->result_array();
     }
 
@@ -62,6 +62,21 @@ class Transaksi_pembayaran_spp_model extends CI_model {
         $this->db->join('kelas', 'kelas.id = siswa.kelas');
         $this->db->join('guru', 'guru.id = kelas.wali_kelas');
         $this->db->order_by('transaksi_pembayaran_spp.id','ASC');
+        return $this->db->get()->result_array();
+    }
+
+    public function getAllByBulanTahun($bulan, $tahun)
+    {
+        $this->db->select("*, transaksi_pembayaran_spp.id AS id, 
+        DATE_FORMAT(transaksi_pembayaran_spp.tanggal_pembayaran,'%d-%m-%Y') AS tanggal_pembayaran,
+        siswa.nama_lengkap AS nama_siswa");
+        $this->db->from('transaksi_pembayaran_spp');
+        $this->db->where('DATE_FORMAT(transaksi_pembayaran_spp.tanggal_pembayaran,"%m")', $bulan);
+        $this->db->where('DATE_FORMAT(transaksi_pembayaran_spp.tanggal_pembayaran,"%Y")', $tahun);
+        $this->db->join('siswa', 'siswa.id = transaksi_pembayaran_spp.siswa');
+        $this->db->join('kelas', 'kelas.id = siswa.kelas');
+        $this->db->join('guru', 'guru.id = kelas.wali_kelas');
+        $this->db->order_by('siswa.nis','ASC');
         return $this->db->get()->result_array();
     }
 }
